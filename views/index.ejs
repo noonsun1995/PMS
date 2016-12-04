@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>233</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>社团人员管理系统</title>
+    <link href="/dist/style/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/dist/style/dashboard.css" rel="stylesheet">
   </head>
+
   <body>
-    <h1>2333</h1>
-    <a href="/logout">退出</a>
+    <!-- 引入header模板文件 -->
+      <%include ./components/header %>
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <!-- 引入nav模板文件，侧边导航栏 -->
+          <%include ./components/nav %>
+          <!-- 条件判断渲染不同的文件 -->
+             <% if (page == 'adduser') { %>
+               <!-- 引入添加用户模板 -->
+               <%include ./user/adduser %>
+             <% } %>
+             <% if (page == 'userhome') { %>
+               <!-- 引入主页main模板文件 -->
+               <%include ./user/home %>
+             <% } %>
+
+        </div>
+      </div>
+    </div>
+
+  <script src="/dist/js/jquery.min.js"></script>
+  <script src="/dist/js/post.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+  <script src="/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

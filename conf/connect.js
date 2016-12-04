@@ -1,13 +1,15 @@
 const conf = require('./db-default.js');
 const mysql = require('mysql');
 const connection = mysql.createConnection(conf.mysql);
-let u_no = 201461551289;
+// let u_no = 201461551289;
+let a;
 connection.connect();
-connection.query(`select * from test as user where u_no = '${u_no}'` , function (err, rows) {
+connection.query(`select p_name from tb_positions` , function (err, rows) {
 	if(err) {
 		throw err;
 	}
-	console.log(rows[0]);
+	a = rows[0];
+	console.log(a);
 	// console.log(rows[0].solution);
 });
-connection.end()
+connection.end();

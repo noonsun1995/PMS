@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-// 注销 /logout
+// 注销 /user/logout
 router.get('/', (req, res) => {
 	req.session.destroy();
-	res.redirect('/login');
+	res.redirect('/user/login');
 })
 module.exports = router;

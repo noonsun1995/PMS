@@ -4,7 +4,7 @@ module.exports = {
 
 		if(!req.session.user) {
 			console.log('未登录');
-			return res.redirect('/login');
+			return res.redirect('/user/login');
 		}
 		next();
 	},

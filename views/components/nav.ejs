@@ -1,0 +1,43 @@
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a <% if (page == 'userhome') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/home">个人首页 <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/user/department_announcement">部门公告</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/user/complete_info">修改个人信息</a>
+		</li>
+	</ul>
+
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a class="nav-link" href="/">全人员概览</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">查找用户</a>
+		</li>
+		<li class="nav-item">
+			<a <% if (page == 'adduser') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/adduser">添加新用户</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">批量添加新用户</a>
+		</li>
+
+	</ul>
+
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a class="nav-link" href="#">回收站</a>
+		</li>
+	</ul>
+</nav>
