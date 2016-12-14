@@ -17,9 +17,9 @@
 
 					<form id='easy-search-form' action="/user/search/easy-search" method="post" class="form-horizontal">
 						<div class="form-group clearfix">
-							<label for="u_no" class="col-sm-2 control-label">查询名字</label>
+							<label for="search-name" class="col-sm-2 control-label">查询名字</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="u-name" id='u-name' >
+								<input type="text" class="form-control" name="search-name" id='search-name' >
 							</div>
 						</div>
 						<div class="form-group clearfix">
@@ -30,16 +30,45 @@
 					</form>
 				</div>
 				<div class="tab-pane fade" role="tabpanel" id="complex-search" aria-expanded="false">
-					<form id='secure-info-form' class="form-horizontal">
-						<div class="form-group clearfix">
-							<label for="u_repeat_password" class="col-sm-2 control-label">再次输入密码</label>
-							<div class="col-sm-10">
-								<input type="password" id="u_repeat-password" class="form-control" name="u_repeat_password">
+					<form id='complex-search-form' action="/user/search/complex-search" method="post" class="form-horizontal">
+						<div class="form-group">
+							<label for="search-name">查询内容</label>
+							<div>
+								<input type="text" id="search-name" class="form-control" name="search-name" required>
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="">查询选项</label>
+							<select id="search-option" name="search-option" class="form-control" required>
+									<option  value=""></option>
+									<option value="u_name">姓名</option>
+									<option value="u_tel">手机号码</option>
+									<option value="u_qq">QQ</option>
+									<option value="u_school_college">学院</option>
+									<option value="u_college_department">专业</option>
+							</select>
+					</div>
+						<div class="form-group">
+							<label for="">请选择部门</label>
+							<select id="department" name="search-department" class="form-control">
+									<option value=""></option>
+								<% departments.forEach(function (element) { %>
+									<option value="<%= element %>"><%= element %></option>
+								<% }) %>
+							</select>
+					</div>
+						<div class="form-group">
+							<label for="position">请选择职位级别</label>
+							<select id="position" name="search-position" class="form-control">
+									<option value=""></option>
+								<% positions.forEach(function (element) { %>
+									<option value="<%= element %>"><%= element %></option>
+								<% }) %>
+							</select>
+					</div>
 						<div class="form-group clearfix">
 							<div class="text-center">
-								<button type="button" id="secure-info-button" class="btn btn-primary">保存</button>
+								<button type="submit" id="complex-search-button" class="btn btn-primary">模糊查询</button>
 							</div>
 						</div>
 					</form>

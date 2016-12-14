@@ -32,7 +32,7 @@ app.use(session({
 // 显示通知中间件
 app.use(flash());
 routes(app);
-app.listen(3100);
+app.listen(3000);
 // var express = require('express');
 // var path = require('path');
 // var favicon = require('serve-favicon');

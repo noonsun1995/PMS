@@ -208,6 +208,60 @@ module.exports = {
 				});
 			})
 		})
+	},
+	complexSearch: function complexSearch(data) {
+		return new Promise((resolve, reject) => {
+			let searchName = data['search-name'];
+			let searchOption = data['search-option'];
+			let searchDepartment = data['search-department'];
+			let searchPosititon = data['search-position'];
+			if(searchDepartment == '' && searchPosititon == '') {
+				pool.getConnection((err, connection) => {
+					connection.query(`select * from tb_users where ${searchOption} like '%${searchName}%'`, (err, result) => {
+						if (err) {
+							reject(err);
+						} else {
+							resolve(result);
+						}
+						connection.release();
+					});
+				})
+			} else if (searchDepartment != '' && searchPosititon == '') {
+				pool.getConnection((err, connection) => {
+					connection.query(`select * from tb_users where ${searchOption} like '%${searchName}%' and u_department = '${searchDepartment}'`, (err, result) => {
+						if (err) {
+							reject(err);
+						} else {
+							resolve(result);
+						}
+						connection.release();
+					});
+				})
+			} else if (searchDepartment == '' && searchPosititon != '') {
+				pool.getConnection((err, connection) => {
+					connection.query(`select * from tb_users where ${searchOption} like '%${searchName}%' and u_position = '${searchPosititon}'`, (err, result) => {
+						if (err) {
+							reject(err);
+						} else {
+							resolve(result);
+						}
+						connection.release();
+					});
+				})
+			} else {
+				pool.getConnection((err, connection) => {
+					connection.query(`select * from tb_users where ${searchOption} like '%${searchName}%' and u_department = '${searchDepartment}' and u_position = '${searchPosititon}'`, (err, result) => {
+						if (err) {
+							reject(err);
+						} else {
+							resolve(result);
+						}
+						connection.release();
+					});
+				})
+			}
+
+		})
 	}
 
 
