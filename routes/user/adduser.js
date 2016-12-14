@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const checkLogin = require('../../middleware/check-login').checkLogin;
-const insert = require('../../dao/user-dao').insert;
-const queryPosition = require('../../dao/user-dao').queryPosition;
-const queryDepartment = require('../../dao/user-dao').queryDepartment;
+const Dao = require('../../dao/user-dao');
+const addUsers = Dao.addUsers;
+const queryPosition = Dao.queryPosition;
+const queryDepartment = Dao.queryDepartment;
 router.get('/', checkLogin, (req, res) => {
 	Promise.all([queryDepartment(), queryPosition()]).then((data) => {
 		console.log(data);
@@ -23,21 +24,31 @@ router.get('/', checkLogin, (req, res) => {
 	// })
 });
 router.post('/', checkLogin, (req, res, next) => {
+	console.log(req.body);
 	let users = req.body['users'];
+	let department = req.body['department'];
 	let position = req.body['position'];
 	// user字符串转变为数组
 	users = users.split('\r\n');
+	console.log(users);
 	// console.log(users);
-	let result = users.every((item, index, array) => {
-		return insert(item, position)
-	})
-	for (let i = 0; i < users.length; i++) {
-		insert(users[i], department).then((data) => {
-			console.log(data);
+	// let result = users.every((item, index, array) => {
+	// 	return insert(item, department, position);
+	// })
+
+		addUsers(users, department, position).then((data) => {
+				console.log(data);
+			if (data == 'success') {
+
+				res.json({"status": "success"});
+			} else {
+				res.json({"status": "error"});
+			}
 		}).catch((err) => {
 			console.log(err);
+			res.json({"status": "error"});
 		})
-	}
+
 	// console.log(req.body['users']);
 
 })

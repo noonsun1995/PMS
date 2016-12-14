@@ -1,0 +1,91 @@
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1><%= title %></h1>
+
+	<section class="row placeholders">
+
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#easy-search" role="tab">简单查询</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#complex-search" role="tab">复杂查询</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade active" role="tabpanel" id="easy-search" aria-expanded="true">
+
+					<form id='easy-search-form' action="/user/search/easy-search" method="post" class="form-horizontal">
+						<div class="form-group clearfix">
+							<label for="u_no" class="col-sm-2 control-label">查询名字</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="u-name" id='u-name' >
+							</div>
+						</div>
+						<div class="form-group clearfix">
+							<div class="text-center">
+								<button type="submit" id="easy-search-button" class="btn btn-primary">查询</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" role="tabpanel" id="complex-search" aria-expanded="false">
+					<form id='secure-info-form' class="form-horizontal">
+						<div class="form-group clearfix">
+							<label for="u_repeat_password" class="col-sm-2 control-label">再次输入密码</label>
+							<div class="col-sm-10">
+								<input type="password" id="u_repeat-password" class="form-control" name="u_repeat_password">
+							</div>
+						</div>
+						<div class="form-group clearfix">
+							<div class="text-center">
+								<button type="button" id="secure-info-button" class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<% if (allUsers) { %>
+				<table class="table table-hover table-bordered">
+				<thead class="thead-inverse">
+					<tr>
+						<th>姓名</th>
+						<th>学号</th>
+						<th>性别</th>
+						<th>职位</th>
+						<th>部门</th>
+						<th colspan="3">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% allUsers.forEach(function (item) { %>
+					<tr>
+						<td><%= item['u_name'] %></td>
+						<td><%= item['u_no'] %></td>
+						<td><%= item['u_sex'] %></td>
+						<td><%= item['u_position'] %></td>
+						<td><%= item['u_department'] %></td>
+						<td><a href="/user/overview/detail?u_no=<%= item['u_no'] %>">详情</a></td>
+						<td><a href="/user/overview/edit/?u_no=<%= item['u_no'] %>">编辑</a></td>
+						<td>
+							<form action="/user/overview/recycle" id="u<%= item['u_no'] %>" method="post" style="display: none">
+								<input type="hidden" name="u-no" value="<%= item['u_no'] %>">
+							</form>
+							<a onclick="if(confirm('你确定将 <%= item['u_name'] %> 放入回收站吗？')){
+								document.getElementById('u<%= item['u_no'] %>').submit();
+								event.preventDefault();
+						}
+						" href="#">删除</a></td>
+					</tr>
+				<% }) }%>
+
+
+
+			</tbody>
+		</table>
+		</div>
+	</section>
+
+</main>
+<script src="/dist/js/modify-user-info.js"></script>

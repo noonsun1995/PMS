@@ -11,33 +11,46 @@
 			<a class="nav-link" href="/user/department_announcement">部门公告</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/user/complete_info">修改个人信息</a>
+			<a <% if (page == 'modify-user-info') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/modify-user-info">修改个人信息</a>
 		</li>
 	</ul>
 
 	<ul class="nav nav-pills">
 		<li class="nav-item">
-			<a class="nav-link" href="/">全人员概览</a>
+			<a <% if (page == 'overview') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/overview">人员概览</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">查找用户</a>
+			<a <% if (page == 'search') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/search">查找用户</a>
 		</li>
 		<li class="nav-item">
 			<a <% if (page == 'adduser') { %>
 				class="nav-link active"
 			<% } else { %>
 					class="nav-link"
-			<% } %> href="/user/adduser">添加新用户</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">批量添加新用户</a>
+			<% } %> href="/user/adduser">添加用户</a>
 		</li>
 
 	</ul>
 
 	<ul class="nav nav-pills">
 		<li class="nav-item">
-			<a class="nav-link" href="#">回收站</a>
+			<a <% if (page == 'recycle') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/recycle">回收站</a>
 		</li>
 	</ul>
 </nav>

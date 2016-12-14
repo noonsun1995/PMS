@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 // express app 实例
@@ -27,7 +28,9 @@ app.use(session({
   resave: true, // 每次请求都重新设置session cookie
   saveUninitialized: false
 })
-)
+);
+// 显示通知中间件
+app.use(flash());
 routes(app);
 app.listen(3100);
 // var express = require('express');

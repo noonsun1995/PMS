@@ -19,8 +19,10 @@ router.post('/', checkNotLogin, (req, res, next) => {
       console.log('密码正确');
       // 写入session
       req.session.user = data['u_no'];
-      // 重定向到主页
-      res.redirect('home');
+
+      res.json({"status": "success"});
+    } else {
+      res.json({"status": "error"});
     }
   }).catch(() => {
     console.log(err);

@@ -5,12 +5,48 @@ create table PMS.tb_users (
 	u_no varchar(12) not null primary key,
 	u_password varchar(16) not null default '12345678',
 	u_name varchar(20) not null,
+	u_sex varchar(2) not null default '不明',
+	u_birthday date not null default '1960-1-1',
+	u_school_college varchar(16) not null,
+	u_college_department varchar(16) not null,
 	u_department varchar(20) not null,
-	u_position varchar(20) not null
-) ;
+	u_position varchar(20) not null,
+	u_tel varchar(11) not null,
+	u_qq varchar(11) not null,
+	u_place varchar(50) not null,
+	u_intro varchar(200) not null,
+	u_remark varchar(200) not null,
+	u_permission int not null,
+	u_is_delete tinyint(1) not null default 0,
+	unique(u_no)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday)
 VALUES
-('201461551289','12345678', '阮松松', '技术部', '部长');i
+('201461551289','12345678', '阮松松', '技术部', '部长', '男', '计算机科学与工程学院',
+'计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21');
+
+INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday)
+VALUES
+('201430550001','12345678', '王二小', '节目部', '部长', '男', '计算机科学与工程学院',
+'计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21');
+
+INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday)
+VALUES
+('201430550002','12345678', '王小明', '策推部', '部长', '女', '计算机科学与工程学院',
+'计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21');
+
+INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday, u_is_delete)
+VALUES
+('201430550003','12345678', '老王', '策推部', '部长', '女', '计算机科学与工程学院',
+'计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21',1);
 -- 常用命令
 delete from PMS.tb_users where u_no = '201461551289';
 drop table `PMS`.`tb_users`;
@@ -19,7 +55,7 @@ alter database PMS default character set 'utf8';
 show create table PMS.tb_users;
 alter table PMS.tb_users character ;
 insert into PMS.tb_users (u_no, u_department) values ('211', '解决');
-
+select u_birthday from PMS.tb_users where u_no = '201461551289';
 -- 部门表
 create table PMS.tb_departments (
 	d_no int primary key not null auto_increment,
@@ -39,7 +75,7 @@ values
 insert into PMS.tb_departments
 (d_name, d_intro, d_remark)
 values
-('外联部', '拉赞助', '无备注')
+('外联部', '拉赞助', '无备注');
 
 create table PMS.tb_positions (
 	p_no int primary key not null auto_increment,

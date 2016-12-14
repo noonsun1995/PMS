@@ -5,6 +5,7 @@ module.exports = {
 		user: 'root',
 		password: 'ruan644179052',
 		database: 'PMS',
-		port: 3306
+		port: 3306,
+		dateStrings: true
 	}
 }

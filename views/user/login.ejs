@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>登录</title>
-</head>
-<body>
-	<form action="/user/login" method="post">
-	学号<input name="user-no" type="number">
-	密码<input name="user-pwd" type="text">
-	<input type="submit" name="" id="" value="login">
-	</form>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>登录</title>
+    <link href="/dist/style/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/dist/style/signin.css" rel="stylesheet">
+		<link href="/dist/style/dashboard.css" rel="stylesheet">
+    <script src="/dist/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+		<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+			<button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="collapse navbar-toggleable-sm" id="navbar">
+				<a class="navbar-brand" href="#">社团人员管理系统</a>
+				<ul class="nav navbar-nav float-sm-right">
+					<li class="nav-item">
+						<a class="nav-link" href="#">关于</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+    <div class="container">
+
+      <form class="form-signin" id="login-form" action="/user/login" method="post">
+        <h2 class="form-signin-heading">登录</h2>
+        <label for="inputEmail" class="sr-only">学号</label>
+        <input type="number" id="inputEmail" class="form-control" placeholder="学号" name="user-no" required autofocus>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="user-pwd" required>
+
+        <button class="btn btn-lg btn-primary btn-block" id="login-button">登录</button>
+      </form>
+
+    </div>
+		<script src="/dist/js/login.js"></script>
+  </body>
 </html>

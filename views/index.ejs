@@ -8,14 +8,15 @@
     <meta name="author" content="">
     <title>社团人员管理系统</title>
     <link href="/dist/style/bootstrap.min.css" rel="stylesheet">
-
     <link href="/dist/style/dashboard.css" rel="stylesheet">
+    <script src="/dist/js/jquery.min.js"></script>
+    <script src="/dist/js/tether.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
   </head>
 
   <body>
     <!-- 引入header模板文件 -->
       <%include ./components/header %>
-
       <div class="container-fluid">
         <div class="row">
 
@@ -30,14 +31,33 @@
                <!-- 引入主页main模板文件 -->
                <%include ./user/home %>
              <% } %>
-
+              <!-- 引入修改用户信息页面 -->
+              <%  if (page == 'modify-user-info') { %>
+                <%include ./user/modify-user-info %>
+              <% } %>
+              <!-- 引入全人员预览页面 -->
+              <%  if (page == 'overview') { %>
+                <%include ./user/overview %>
+              <% } %>
+              <!-- 引入详细信息页 -->
+              <%  if (page == 'detail') { %>
+                <%include ./user/detail %>
+              <% } %>
+              <!-- 引入修改其他人员信息 -->
+              <%  if (page == 'edit') { %>
+                <%include ./user/edit %>
+              <% } %>
+              <!-- 引入回收站页面 -->
+              <%  if (page == 'recycle') { %>
+                <%include ./user/recycle %>
+              <% } %>
+              <!-- 引入搜索页面 -->
+              <%  if (page == 'search') { %>
+                <%include ./user/search %>
+              <% } %>
         </div>
       </div>
     </div>
 
-  <script src="/dist/js/jquery.min.js"></script>
-  <script src="/dist/js/post.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-  <script src="/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

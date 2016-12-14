@@ -1,0 +1,61 @@
+s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1><%= title %></h1>
+
+	<section class="row placeholders">
+
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<table class="table table-bordered">
+			  <thead class="thead-inverse">
+			    <tr>
+			      <th colspan="2"><%= userInfo['u_name'] %> - <%= userInfo['u_department'] %> - <%= userInfo['u_position'] %></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>学号</td>
+						<td><%= userInfo['u_no'] %></td>
+			    </tr>
+					<tr>
+			      <td>性别</td>
+						<td><%= userInfo['u_sex'] %></td>
+			    </tr>
+					<tr>
+			      <td>生日</td>
+						<td><%= userInfo['u_birthday'] %></td>
+			    </tr>
+					<tr>
+						<td>学院</td>
+						<td><%= userInfo['u_school_college'] %></td>
+					</tr>
+					<tr>
+						<td>专业</td>
+						<td><%= userInfo['u_college_department'] %></td>
+					</tr>
+					<tr>
+						<td>手机号</td>
+						<td><%= userInfo['u_tel'] %></td>
+					</tr>
+					<tr>
+						<td>QQ</td>
+						<td><%= userInfo['u_qq'] %></td>
+					</tr>
+					<tr>
+						<td>家乡</td>
+						<td><%= userInfo['u_place'] %></td>
+					</tr>
+					<tr>
+						<td>自我介绍</td>
+						<td><%= userInfo['u_intro'] %></td>
+					</tr>
+					<tr>
+						<td>备注</td>
+						<td><%= userInfo['u_remark'] %></td>
+					</tr>
+
+
+			  </tbody>
+			</table>
+		</div>
+	</section>
+
+</main>
