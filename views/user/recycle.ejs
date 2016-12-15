@@ -1,4 +1,4 @@
-s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<h1><%= title %></h1>
 
 	<section class="row placeholders">
@@ -24,6 +24,7 @@ s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 						<td><%= item['u_position'] %></td>
 						<td><%= item['u_department'] %></td>
 						<td><a href="/user/overview/detail?u_no=<%= item['u_no'] %>">详情</a></td>
+						<% if(checkPermission < 2) { %>
 						<td>
 							<form action="/user/recycle/restore" id="u<%= item['u_no'] %>" method="post" style="display: none">
 								<input type="hidden" name="u-no" value="<%= item['u_no'] %>">
@@ -34,15 +35,16 @@ s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 						}
 						" href="#">回收</a></td>
 						<td>
-							<form action="/user/recycle/delete" id="u<%= item['u_no'] %>" method="post" style="display: none">
+							<form action="/user/recycle/delete" id="uu<%= item['u_no'] %>" method="post" style="display: none">
 								<input type="hidden" name="u-no" value="<%= item['u_no'] %>">
 							</form>
 							<a onclick="if(confirm('你确定彻底删除 <%= item['u_name'] %> 吗？')){
-								document.getElementById('u<%= item['u_no'] %>').submit();
+								document.getElementById('uu<%= item['u_no'] %>').submit();
 								event.preventDefault();
 						}
 						" href="#">彻底删除</a></td>
 					</tr>
+				<% } %>
 				<% }) %>
 
 

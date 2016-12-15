@@ -1,0 +1,45 @@
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1><%= title %></h1>
+
+	<section class="row placeholders">
+
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<table class="table table-hover table-bordered">
+      <thead class="thead-inverse">
+        <tr>
+          <th>部门名称</th>
+          <th>部门介绍</th>
+          <th>部门备注</th>
+					<% if(checkPermission == 0) { %>
+          <th colspan="3">操作</th>
+					<% } %>
+        </tr>
+      </thead>
+      <tbody>
+				<% allDepartments.forEach(function (item) { %>
+					<tr>
+						<td><%= item['d_name'] %></td>
+						<td><%= item['d_intro'] %></td>
+						<td><%= item['d_remark'] %></td>
+						<% if(checkPermission == 0) { %>
+						<td>
+							<form action="/user/overview/departments/delete" id="d<%= item['d_no'] %>" method="post" style="display: none">
+								<input type="hidden" name="d-no" value="<%= item['d_no'] %>">
+							</form>
+							<a onclick="if(confirm('你确定将 <%= item['d_name'] %> 彻底删除吗？')){
+								document.getElementById('d<%= item['d_no'] %>').submit();
+								event.preventDefault();
+						}
+						" href="#">彻底删除</a></td>
+					</tr>
+					<% } %>
+				<% }) %>
+
+
+
+      </tbody>
+    </table>
+		</div>
+	</section>
+
+</main>

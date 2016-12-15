@@ -8,24 +8,38 @@
 			<% } %> href="/user/home">个人首页 <span class="sr-only">(current)</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/user/department_announcement">部门公告</a>
-		</li>
-		<li class="nav-item">
-			<a <% if (page == 'modify-user-info') { %>
+			<a <% if (page == 'modifyUserInfo') { %>
 				class="nav-link active"
 			<% } else { %>
 					class="nav-link"
 			<% } %> href="/user/modify-user-info">修改个人信息</a>
 		</li>
 	</ul>
-
 	<ul class="nav nav-pills">
 		<li class="nav-item">
-			<a <% if (page == 'overview') { %>
+			<a <% if (page == 'overviewDepartments') { %>
 				class="nav-link active"
 			<% } else { %>
 					class="nav-link"
-			<% } %> href="/user/overview">人员概览</a>
+			<% } %> href="/user/overview/departments">部门概览</a>
+		</li>
+		<li class="nav-item">
+			<a <% if (page == 'overviewPositions') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/overview/positions">职位概览</a>
+		</li>
+
+	</ul>
+
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a <% if (page == 'overviewUsers') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/overview/users">人员概览</a>
 		</li>
 		<li class="nav-item">
 			<a <% if (page == 'search') { %>
@@ -34,6 +48,7 @@
 					class="nav-link"
 			<% } %> href="/user/search">查找用户</a>
 		</li>
+		<% if(checkPermission < 2) { %>
 		<li class="nav-item">
 			<a <% if (page == 'adduser') { %>
 				class="nav-link active"
@@ -41,9 +56,26 @@
 					class="nav-link"
 			<% } %> href="/user/adduser">添加用户</a>
 		</li>
-
+		<% } %>
 	</ul>
-
+	<% if(checkPermission == 0) { %>
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a  <% if (page == 'addDepartment') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/admin/add-department">增加部门</a>
+		</li>
+		<li class="nav-item">
+			<a <% if (page == 'addPosition') { %>
+				class="nav-link active"
+			<% } else { %>
+					class="nav-link"
+			<% } %> href="/user/admin/add-position">增加职位</a>
+		</li>
+	</ul>
+	<% } %>
 	<ul class="nav nav-pills">
 		<li class="nav-item">
 			<a <% if (page == 'recycle') { %>

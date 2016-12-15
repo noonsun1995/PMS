@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const checkLogin = require('../../middleware/check-login').checkLogin;
+const checkPermission = require('../../middleware/check-permission').checkPermission;
 const Dao = require('../../dao/user-dao');
 const query = Dao.query;
 const modifyInfo = Dao.modifyInfo;
 const updatePwd = Dao.updatePwd;
-router.get('/', checkLogin, (req, res) => {
+router.get('/', checkLogin, checkPermission, (req, res) => {
 	res.render('index', {
-		page: 'modify-user-info',
+		page: 'modifyUserInfo',
 		title: '修改个人信息',
+		checkPermission: req.permisson
 	});
-})
+});
 router.get('/set-default-data', checkLogin, (req, res) => {
 	query(req.session.user).then((data) => {
 		res.json(data);

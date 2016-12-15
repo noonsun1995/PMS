@@ -1,0 +1,37 @@
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1><%= title %></h1>
+
+	<section class="row placeholders">
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="alert alert-warning" role="alert">
+				<strong>注意：</strong>若想要更改已添加职位的信息，可直接在此页输入职位名字和要修改的信息即可！
+			</div>
+		<form id='add-position-form'>
+			<div class="form-group">
+				<label for="position-name">请输入要添加的职位</label>
+				<input id="position-name" name="position-name" class="form-control" type="text" >
+			</div>
+			<div class="form-group">
+				<label for="position-name">请选择职位等级（共3级）</label>
+				<select class="form-control" name="position-permission">
+					<option value="0">0级（拥有系统所有权限，包括增删部门，增删职位）</option>
+					<option value="1">1级（拥有系统的添加人员功能）</option>
+					<option value="2">2级(只能查看或者更改自己信息)</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="position-intro">请输入职位介绍</label>
+				<textarea id="position-intro" name="position-intro" class="form-control" type="text" rows="6"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="position-remark">请输入职位备注</label>
+				<textarea id="position-remark" name="position-remark" class="form-control" type="text" rows="6"></textarea>
+			</div>
+			<button type="button" id="add-position-button" class="btn btn-primary">保存</button>
+		</form>
+	</div>
+	</section>
+
+</main>
+<script src="/dist/js/add-position.js"></script>

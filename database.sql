@@ -1,6 +1,6 @@
 -- 创建PMS数据库
 create database PMS;
--- 创建测试的表
+-- 创建用户的表
 create table PMS.tb_users (
 	u_no varchar(12) not null primary key,
 	u_password varchar(16) not null default '12345678',
@@ -16,13 +16,60 @@ create table PMS.tb_users (
 	u_place varchar(50) not null,
 	u_intro varchar(200) not null,
 	u_remark varchar(200) not null,
-	u_permission int not null,
+	u_permission int not null default 2,
 	u_is_delete tinyint(1) not null default 0,
 	unique(u_no)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+-- 创建部门表
+create table PMS.tb_departments (
+	d_no int primary key not null auto_increment,
+	d_name varchar(20) not null,
+	d_intro varchar(500) not null,
+	d_remark varchar(20) not null,
+	unique(d_name)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+-- 创建职位表
+create table PMS.tb_positions (
+	p_no int primary key not null auto_increment,
+	p_name varchar(20) not null,
+	p_intro varchar(500) not null,
+	p_remark varchar(20) not null,
+	p_permission int not null default 2,
+	unique(p_name)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+-- 删除表
+drop table `PMS`.`tb_users`;
+drop table `PMS`.`tb_departments`;
+drop table `PMS`.`tb_positions`;
+
+-- 插入一些数据到用户表
+-- 超级管理员
+INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position, u_permission)
+VALUES
+('201400000000','songsong', '超级管理员', '技术部', '超级管理员', 0);
+-- 部长
 INSERT INTO `PMS`.`tb_users`
 (u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
-u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday)
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday, u_permission)
+VALUES
+('201461551289','12345678', '阮松松', '技术部', '部长', '男', '计算机科学与工程学院',
+'计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21', 1);
+
+insert into PMS.tb_positions
+(p_name, p_intro, p_remark, p_permission)
+values
+('超级管理员', '超级管理员', '无备注', 0);
+
+insert into PMS.tb_positions
+(p_name, p_intro, p_remark, p_permission)
+values
+('部长', '部门老大', '无备注', 1);
+
+
+INSERT INTO `PMS`.`tb_users`
+(u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
+u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday,)
 VALUES
 ('201461551289','12345678', '阮松松', '技术部', '部长', '男', '计算机科学与工程学院',
 '计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21');
@@ -49,20 +96,13 @@ VALUES
 '计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21',1);
 -- 常用命令
 delete from PMS.tb_users where u_no = '201461551289';
-drop table `PMS`.`tb_users`;
 drop database PMS;
 alter database PMS default character set 'utf8';
 show create table PMS.tb_users;
 alter table PMS.tb_users character ;
 insert into PMS.tb_users (u_no, u_department) values ('211', '解决');
 select u_birthday from PMS.tb_users where u_no = '201461551289';
--- 部门表
-create table PMS.tb_departments (
-	d_no int primary key not null auto_increment,
-	d_name varchar(20) not null,
-	d_intro varchar(500) not null,
-	d_remark varchar(20) not null
-);
+
 insert into PMS.tb_departments
 (d_name, d_intro, d_remark)
 values
@@ -77,12 +117,10 @@ insert into PMS.tb_departments
 values
 ('外联部', '拉赞助', '无备注');
 
-create table PMS.tb_positions (
-	p_no int primary key not null auto_increment,
-	p_name varchar(20) not null,
-	p_intro varchar(500) not null,
-	p_remark varchar(20) not null
-);
+insert into PMS.tb_positions
+(p_name, p_intro, p_remark)
+values
+('超级管理员', '超级管理员', '无备注');
 
 insert into PMS.tb_positions
 (p_name, p_intro, p_remark)

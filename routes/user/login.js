@@ -11,7 +11,6 @@ router.post('/', checkNotLogin, (req, res, next) => {
   // 获取到请求的学号和密码
   let u_no = req.body['user-no'];
   let u_pwd = req.body['user-pwd'];
-  console.log(u_no);
   query(u_no).then((data) => {
     console.log(data['u_password']);
     // 验证密码是否正确
@@ -24,8 +23,8 @@ router.post('/', checkNotLogin, (req, res, next) => {
     } else {
       res.json({"status": "error"});
     }
-  }).catch(() => {
-    console.log(err);
+  }).catch((err) => {
+    res.json({"status": "error"});
   })
 })
 module.exports = router;

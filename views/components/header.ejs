@@ -3,21 +3,38 @@
 	<div class="collapse navbar-toggleable-sm" id="navbar">
 		<a class="navbar-brand" href="#">社团人员管理系统</a>
 		<ul class="nav navbar-nav float-sm-right">
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
-			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Settings</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">关于</a>
+				<a class="nav-link" href="#" data-toggle="modal" data-target="#about">关于</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/user/logout">退出</a>
 			</li>
 		</ul>
-		<form class="form-inline float-sm-right mr-3">
-			<input class="form-control" type="text" placeholder="Search">
+		<form class="form-inline float-sm-right mr-3" action="/user/search/easy-search" method="post">
+			<input class="form-control" name="search-name" type="text" placeholder="查询用户">
 		</form>
 	</div>
 </nav>
+<!-- Large modal -->
+
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">社团人员管理系统</h4>
+      </div>
+      <div class="modal-body">
+				<h4>技术架构</h4>
+				<p>采用Nodejs + Express + ejs + Mysql</p>
+				<h4>权限级别</h4>
+				<P>0级（拥有系统所有权限，包括增删部门，增删职位）</p>
+				<p>1级（拥有系统的添加人员功能）</p>
+				<p>2级(只能查看或者更改自己信息)</p>
+      </div>
+    </div>
+  </div>
+</div>

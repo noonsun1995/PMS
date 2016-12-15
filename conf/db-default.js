@@ -6,6 +6,7 @@ module.exports = {
 		password: 'ruan644179052',
 		database: 'PMS',
 		port: 3306,
-		dateStrings: true
+		dateStrings: true,
+		connectionLimit: 20
 	}
 }

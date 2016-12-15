@@ -1,4 +1,4 @@
-s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<h1><%= title %></h1>
 
 	<section class="row placeholders">
@@ -24,6 +24,12 @@ s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 						<td><%= item['u_position'] %></td>
 						<td><%= item['u_department'] %></td>
 						<td><a href="/user/overview/detail?u_no=<%= item['u_no'] %>">详情</a></td>
+						<% if(checkPermission < 2) { %>
+
+							<% if(item['u_permission'] == 0 && checkPermission != 0) { %>
+								<td></td>
+								<td></td>
+								<% } else {%>
 						<td><a href="/user/overview/edit/?u_no=<%= item['u_no'] %>">编辑</a></td>
 						<td>
 							<form action="/user/overview/recycle" id="u<%= item['u_no'] %>" method="post" style="display: none">
@@ -35,6 +41,7 @@ s<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 						}
 						" href="#">删除</a></td>
 					</tr>
+					<% } } %>
 				<% }) %>
 
 

@@ -32,12 +32,12 @@
                <%include ./user/home %>
              <% } %>
               <!-- 引入修改用户信息页面 -->
-              <%  if (page == 'modify-user-info') { %>
+              <%  if (page == 'modifyUserInfo') { %>
                 <%include ./user/modify-user-info %>
               <% } %>
               <!-- 引入全人员预览页面 -->
-              <%  if (page == 'overview') { %>
-                <%include ./user/overview %>
+              <%  if (page == 'overviewUsers') { %>
+                <%include ./user/overview-users %>
               <% } %>
               <!-- 引入详细信息页 -->
               <%  if (page == 'detail') { %>
@@ -54,6 +54,18 @@
               <!-- 引入搜索页面 -->
               <%  if (page == 'search') { %>
                 <%include ./user/search %>
+              <% } %>
+              <%  if (page == 'addDepartment') { %>
+                <%include ./admin/add-department %>
+              <% } %>
+              <%  if (page == 'addPosition') { %>
+                <%include ./admin/add-position %>
+              <% } %>
+              <%  if (page == 'overviewDepartments') { %>
+                <%include ./user/overview-departments %>
+              <% } %>
+              <%  if (page == 'overviewPositions') { %>
+                <%include ./user/overview-positions %>
               <% } %>
         </div>
       </div>

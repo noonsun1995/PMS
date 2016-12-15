@@ -1,0 +1,29 @@
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1><%= title %></h1>
+
+	<section class="row placeholders">
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="alert alert-warning" role="alert">
+				<strong>注意：</strong>若想要更改已添加部门的信息，可直接在此页输入部门名字和要修改的信息即可！
+			</div>
+		<form id='add-department-form'>
+			<div class="form-group">
+				<label for="">请输入要添加的部门</label>
+				<input name="department-name" class="form-control" type="text" >
+			</div>
+			<div class="form-group">
+				<label for="">请输入部门介绍</label>
+				<textarea name="department-intro" class="form-control" type="text" rows="6"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="">请输入部门备注</label>
+				<textarea name="department-remark" class="form-control" type="text" rows="6"></textarea>
+			</div>
+			<button type="button" id="add-department-button" class="btn btn-primary">保存</button>
+		</form>
+	</div>
+	</section>
+
+</main>
+<script src="/dist/js/add-department.js"></script>

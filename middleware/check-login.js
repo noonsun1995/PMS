@@ -6,6 +6,7 @@ module.exports = {
 			console.log('未登录');
 			return res.redirect('/user/login');
 		}
+		// req.permisson = 1;
 		next();
 	},
 	// 检查是否登录，有登录则重定向之前的页面
@@ -15,6 +16,7 @@ module.exports = {
 			console.log('已经登录');
 			return res.redirect('/');
 		}
+		// req.permisson = 1;
 		next();
 	}
 }

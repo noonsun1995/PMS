@@ -21,4 +21,6 @@ module.exports = function (app) {
   app.use('/user/recycle', require('./user/recycle'));
   // 注册查询路由
   app.use('/user/search', require('./user/search'));
+  // 注册管理员路由
+  app.use('/user/admin', require('./admin/admin'));
 }
