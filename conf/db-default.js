@@ -7,6 +7,7 @@ module.exports = {
 		database: 'PMS',
 		port: 3306,
 		dateStrings: true,
-		connectionLimit: 20
+		connectionLimit: 20,
+		acquireTimeout: 3000
 	}
 }

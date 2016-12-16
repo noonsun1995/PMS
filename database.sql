@@ -1,3 +1,4 @@
+-- 初次运行建立数据库开始处
 -- 创建PMS数据库
 create database PMS;
 -- 创建用户的表
@@ -49,6 +50,23 @@ INSERT INTO `PMS`.`tb_users`
 VALUES
 ('201400000000','songsong', '超级管理员', '技术部', '超级管理员', 0);
 -- 部长
+
+
+insert into PMS.tb_positions
+(p_name, p_intro, p_remark, p_permission)
+values
+('超级管理员', '超级管理员', '无备注', 0);
+
+-- 初次运行建立数据库结束处
+
+
+
+
+
+
+
+
+
 INSERT INTO `PMS`.`tb_users`
 (u_no, u_password, u_name, u_department, u_position,u_sex, u_school_college,
 u_college_department, u_tel, u_qq, u_place, u_intro, u_remark, u_birthday, u_permission)
@@ -56,10 +74,6 @@ VALUES
 ('201461551289','12345678', '阮松松', '技术部', '部长', '男', '计算机科学与工程学院',
 '计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21', 1);
 
-insert into PMS.tb_positions
-(p_name, p_intro, p_remark, p_permission)
-values
-('超级管理员', '超级管理员', '无备注', 0);
 
 insert into PMS.tb_positions
 (p_name, p_intro, p_remark, p_permission)
@@ -95,7 +109,7 @@ VALUES
 ('201430550003','12345678', '老王', '策推部', '部长', '女', '计算机科学与工程学院',
 '计算机科学与技术','18813298638', '644179052', '四川广安', '喜欢写代码', '无', '1996-1-21',1);
 -- 常用命令
-delete from PMS.tb_users where u_no = '201461551289';
+delete from PMS.tb_positions where p_no = 1;
 drop database PMS;
 alter database PMS default character set 'utf8';
 show create table PMS.tb_users;
