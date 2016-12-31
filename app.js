@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const timeout = require('connect-timeout')
 const routes = require('./routes');
@@ -32,7 +31,5 @@ app.use(session({
   saveUninitialized: false
 })
 );
-// 显示通知中间件
-app.use(flash());
 routes(app);
 app.listen(3100);

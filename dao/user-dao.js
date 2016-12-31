@@ -1,9 +1,8 @@
-// 对nodejs进行操作
+/* 普通用户对数据库的操作 */
 const conf = require('../conf/db-default');
 const mysql = require('mysql');
 // 创建连接池
 const pool  = mysql.createPool(conf.mysql);
-
 // 操作的方法
 module.exports = {
 	query: function query(u_no) {
@@ -81,8 +80,6 @@ module.exports = {
 
 				});
 			})
-
-
 		});
 	},
 	modifyInfo: function modifyedInfo(u_no, data) {
@@ -120,7 +117,7 @@ module.exports = {
 			pool.getConnection((err, connection) => {
 				connection.query(`select * from tb_users where u_is_delete <> 1`, (err, result) => {
 					if (err) {
-							
+
 							console.log(err);
 						reject(err);
 					} else {
@@ -335,6 +332,4 @@ module.exports = {
 			})
 		})
 	}
-
-
 }
