@@ -5,14 +5,21 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const timeout = require('connect-timeout')
 const routes = require('./routes');
+const compression = require('compression');
 // express app 实例
 const app = express();
 // 设置模板目录
 app.set('views', path.join(__dirname, 'views'));
 // 设置模板引擎ejs
 app.set('view engine', 'ejs');
-// 设置静态文件目录
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('view cache', true);
+// 设置静态文件目录, 设置缓存
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: 86400000
+}));
+
+// 开启gzip
+app.use(compression());
 // 设置超时
 app.use(timeout(5000));
 // 解析post的数据
